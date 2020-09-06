@@ -18,11 +18,9 @@ Kaggle SIIM Melanoma Classification Challange :  https://www.kaggle.com/c/siim-i
 
 The dataset consists of images in :
 
-  DIOCOM format
-  
-  JPEG format in JPEG directory
-  
-  TFRecord format in tfrecords directory
+* DIOCOM format
+* JPEG format in JPEG directory
+* TFRecord format in tfrecords directory
 
 Additionally, there is a metadata comprising of train, test and submission file in CSV format.
 
@@ -52,4 +50,38 @@ Additionally, there is a metadata comprising of train, test and submission file 
   
   You can experiment with following hyperparametes to see different results:
   
-  'resize_images.py' : image size
+  `resize_images.py` : image size 
+  
+  `create_folds.py` : No of Folds
+  
+  `train.py` : 
+  
+  * Used Model 
+  * Augmentations
+  * Learning Rate
+  * Optimizer
+  * Use of Metadata
+  
+## Software Used :
+    Python 3.7.6
+    cuda version 10.2.89
+    cuddn 7.6.5
+   python packages are detailed separately in `requirements.txt` or `environment.yml`.
+   
+## Data Setup:
+  Assumes that [Kaggle Api](https://github.com/Kaggle/kaggle-api) is installed.
+    ```
+    cd data
+    kaggle competitions download -c siim-isic-melanoma-classification
+    ```
+## Training 
+  ```
+  python resize_images.py
+  python create_folds.py
+  python train.py
+  ```
+## Web App use locally :
+ ```
+ cd Streamlit
+ streamlit run app.py
+ ```
