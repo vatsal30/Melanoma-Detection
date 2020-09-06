@@ -70,12 +70,16 @@ Additionally, there is a metadata comprising of train, test and submission file 
     Python 3.7.6
     cuda version 10.2.89
     cuddn 7.6.5
+    
    python packages are detailed separately in `requirements.txt` or `environment.yml`.
 
 ## System Steup:
   You can install all necessary files using 
+  
   ```  pip install -r requirements.txt ```
+  
   or if you are using conda you can create virtual environment named `pytorch` which has all required libraries:
+  
   ``` conda env create -f environment.yml ```
 ## Data Setup:
   Assumes that [Kaggle Api](https://github.com/Kaggle/kaggle-api) is installed.
@@ -108,6 +112,6 @@ source: https://developers.google.com/machine-learning/crash-course/classificati
 
 # Achieved AUC Score :
   
-  AUC : 0.8990
+  **AUC : 0.8990**
   
   This means for a given image our model is 89.9% sure about its prediction whether it is postive or negative.
