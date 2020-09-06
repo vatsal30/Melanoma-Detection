@@ -17,21 +17,24 @@ def resize_image(image_path, output_folder, resize):
 
 
 if __name__ =="__main__":
-    input_folder = "/media/vatsal/Movies & Games/down_siim-isic-melanoma-classification/jpeg/train"
-    output_folder = "/media/vatsal/Movies & Games/down_siim-isic-melanoma-classification/train224"
+    image_size = (224,224)
+    input_folder = "data/train"
+    output_folder = "data/train224"
 
     images = glob.glob(os.path.join(input_folder, "*.jpg"))
+    
 
+    
     Parallel(n_jobs=12)(
         delayed(resize_image)(
             i,
             output_folder,
-            (224,224),
+            image_size,
         ) for i in tqdm(images)
     )
 
-    input_folder = "/media/vatsal/Movies & Games/down_siim-isic-melanoma-classification/jpeg/test"
-    output_folder = "/media/vatsal/Movies & Games/down_siim-isic-melanoma-classification/test224"
+    input_folder = "data/test"
+    output_folder = "data/test224"
 
     images = glob.glob(os.path.join(input_folder, "*.jpg"))
 
@@ -39,6 +42,6 @@ if __name__ =="__main__":
         delayed(resize_image)(
             i,
             output_folder,
-            (224,224),
+            image_size,
         ) for i in tqdm(images)
     )
