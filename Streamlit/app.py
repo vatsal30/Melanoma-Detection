@@ -10,6 +10,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set(style="whitegrid")
 
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+local_css("style.css")
+
+
 #plotly
 import plotly.express as px
 import chart_studio.plotly as py
@@ -19,8 +26,7 @@ import cufflinks
 cufflinks.go_offline()
 cufflinks.set_config_file(world_readable=True, theme='pearl')
 
-#pydicom
-import pydicom
+from prediction import ensemble
 
 # Suppress warnings
 import warnings
@@ -44,8 +50,29 @@ test_df = pd.read_csv("data/test.csv")
 temp = train_df.groupby(['benign_malignant','sex']).count()['image_name'].to_frame()
 
 
-st.sidebar.title("Navigation")
-nav = st.sidebar.radio("Go to",["Prediction","EDA","About"])
+st.sidebar.title("Melenoma Detection")
+nav = st.sidebar.radio("Go to",["Prediction","EDA","About Project","About US"])
+
+if nav=="About US":
+    st.title("About US")
+    st.write("Team Members are :")
+    st.markdown("""
+    ## 1. Vatsal Vora
+    > [LinkedIn] (https://www.linkedin.com/in/vatsal30/) [Github] (https://github.com/vatsal30/)
+
+    ## 2. Mit Suthar
+    > [LinkedIn] (https://www.linkedin.com/in/mit-suthar-7b5328161/) [Github] (https://github.com/mit-27)
+
+    ## 3. Kashyap Shyani
+    > [LinkedIn] (https://www.linkedin.com/in/kashyap-shyani-24219b179) [Github] (https://github.com/kashyapshyani/)
+
+    # Project Link
+
+    From the following link, you can find the project details:
+
+    https://github.com/vatsal30/HackGujarat
+    """,True)
+
 
 if nav=="Prediction":
     st.title("Melanoma Prediction")
@@ -54,29 +81,40 @@ if nav=="Prediction":
     uploaded_file = st.file_uploader("Choose an image for Prediction", type=["jpg","png","jpeg"])
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
-        st.image(image, caption='Uploaded Image.', use_column_width=True)
+        st.image(image, caption='Uploaded Image.', width=384)
+        # st.write(
+        #             '''
+        #             <img  class="Img">
+        #                 src <br />
+        #             </img>
+        #             ''',
+        #             unsafe_allow_html=True
+        #         )
         st.write("")
         st.write("")
-        st.write("Predicting...")
 
 
-    st.write(
-        '''
-        <span style="color:green;font-size:40px">
-            Melanoma not Detected. <br />
-        </span>
-        ''',
-        unsafe_allow_html=True
-    )
+        if st.button("Predict"):
+            prediction = ensemble(uploaded_file)
 
-    st.write(
-        '''
-        <span style="color:red;font-size:40px">
-            Melanoma Detected. <br />
-        </span>
-        ''',
-        unsafe_allow_html=True
-    )
+            if prediction<=0:
+                st.write(
+                    '''
+                    <span  class="resultFalse">
+                        Melanoma not Detected. <br />
+                    </span>
+                    ''',
+                    unsafe_allow_html=True
+                )
+            else:
+                st.write(
+                    '''
+                    <span  class="resultTrue">
+                        Melanoma Detected. <br />
+                    </span>
+                    ''',
+                    unsafe_allow_html=True
+                )
 
 
 
@@ -327,7 +365,7 @@ if nav=="EDA":
     #     st.title("Column Names : ")
     #     st.write(columns)
 
-if nav=="About":
+if nav=="About Project":
     st.title("All about Melenoma")
     st.markdown("""
     > Skin cancer is the most prevalent type of cancer. Melanoma, specifically, is responsible for 75% of skin cancer deaths, despite being the least common skin cancer. The American Cancer Society estimates over 100,000 new melanoma cases will be diagnosed in 2020. It's also expected that almost 7,000 people will die from the disease. As with other cancers, early and accurate detection—potentially aided by data science—can make treatment more effective.
@@ -336,7 +374,7 @@ https://www.kaggle.com/c/siim-isic-melanoma-classification
 > Melanoma is a skin cancer that arises from a skin cell called a melanocyte, which makes a the pigment (melanin) that gives your skin its color. Melanoma can appear in different ways, most commonly as a new spot on the skin or as an already existing mole that changes in color, size, or shape. While considered the most dangerous type of skin cancer because of its ability to rapidly spread throughout the body, melanoma is generally very treatable if found early.
 https://www.verywellhealth.com/what-is-melanoma-514215
 
-<img src='https://impactmelanoma.org/wp-content/uploads/2018/11/Standard-Infographic_0.jpg' style="width:700px;height:600px;">
+<img src='https://impactmelanoma.org/wp-content/uploads/2018/11/Standard-Infographic_0.jpg' style="width:700px;height:400px;">
 
 
 > The[ Society for Imaging Informatics in Medicine (SIIM)](https://siim.org/page/about_siim) is the leading healthcare professional organization for those interested in the current and future use of informatics in medical imaging. The society's mission is to advance medical imaging informatics across the enterprise through education, research, and innovation in a multi-disciplinary community. The [International Skin Imaging Collaboration or
