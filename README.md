@@ -89,7 +89,7 @@ Additionally, there is a metadata comprising of train, test and submission file 
  streamlit run app.py
  ```
 ## Evaluation of Model Using AUC: 
-> For this particluar problem, our submissions will be evaluated using **area under the ROC curve**. An ROC curve (receiver operating characteristic curve) is a graph showing the performance of a classification model at all classification thresholds. This curve plots two parameters:
+> For this particluar problem, we will be evaluate model using **area under the ROC curve**. An ROC curve (receiver operating characteristic curve) is a graph showing the performance of a classification model at all classification thresholds. This curve plots two parameters:
 
 ![](https://imgur.com/yNeAG4M.png)
 
