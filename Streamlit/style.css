@@ -1,0 +1,57 @@
+
+
+.stButton>button {
+    color: #ae2697;
+    padding: 5px;
+    width: 5em;
+    height: 3em;
+    margin: auto;
+    border-color: #ae2697;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.stButton>button:hover{
+    background-color: #26ae60;
+    color: white;
+    border: 1px solid green;
+}
+
+img{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.fullScreenFrame > div {
+    display: flex;
+    justify-content: center;
+}
+
+.resultFalse{
+    color:green;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.resultTrue{
+    color:red;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+/* .stTextInput>div>div>input {
+    color: #4F8BF9;
+} */
