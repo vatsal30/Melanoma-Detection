@@ -2,6 +2,8 @@
 
 This repository contains code to create web application which use to detect melanome from given skin image.
 
+You can try this app using : http://3.17.64.68:8501/
+
 ## Introduction
 
 Skin cancer is the most prevalent type of cancer. Melanoma, specifically, is responsible for 75% of skin cancer deaths, despite being the least common skin cancer. The American Cancer Society estimates over 100,000 new melanoma cases will be diagnosed in 2020. It's also expected that almost 7,000 people will die from the disease. As with other cancers, early and accurate detection—potentially aided by data science—can make treatment more effective. https://www.kaggle.com/c/siim-isic-melanoma-classification.
@@ -70,18 +72,29 @@ Additionally, there is a metadata comprising of train, test and submission file 
    
 ## Data Setup:
   Assumes that [Kaggle Api](https://github.com/Kaggle/kaggle-api) is installed.
-    ```
-    cd data
-    kaggle competitions download -c siim-isic-melanoma-classification
-    ```
+    
+  ```
+  cd data
+  kaggle competitions download -c siim-isic-melanoma-classification
+  ```
 ## Training 
   ```
   python resize_images.py
   python create_folds.py
   python train.py
   ```
-## Web App use locally :
+## Web App to use locally :
  ```
  cd Streamlit
  streamlit run app.py
  ```
+## Evaluation of Model Using AUC: 
+> For this particluar problem, our submissions will be evaluated using **area under the ROC curve**. An ROC curve (receiver operating characteristic curve) is a graph showing the performance of a classification model at all classification thresholds. This curve plots two parameters:
+
+![](https://imgur.com/yNeAG4M.png)
+
+> An ROC curve plots TPR vs. FPR at different classification thresholds. Lowering the classification threshold classifies more items as positive, thus increasing both False Positives and True Positives. The following figure shows a typical ROC curve.
+
+![](https://imgur.com/N3UOcBF.png)
+
+source: https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc
