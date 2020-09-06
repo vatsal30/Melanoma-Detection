@@ -98,3 +98,9 @@ Additionally, there is a metadata comprising of train, test and submission file 
 ![](https://imgur.com/N3UOcBF.png)
 
 source: https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc
+
+# Achieved AUC Score :
+  
+  AUC : 0.8990
+  
+  This means for a given image our model is 89.9% sure about its prediction whether it is postive or negative.
