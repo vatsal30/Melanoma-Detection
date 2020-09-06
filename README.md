@@ -1,5 +1,7 @@
 # Melanoma Classification
 
+![](https://github.com/vatsal30/HackGujarat/blob/master/EDA/images/final.PNG)
+
 This repository contains code to create web application which use to detect melanome from given skin image.
 
 You can try this app using : http://3.17.64.68:8501/
