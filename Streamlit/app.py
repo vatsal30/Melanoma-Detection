@@ -2,6 +2,7 @@ import os
 from os import listdir
 import pandas as pd
 import numpy as np
+from PIL import Image
 import streamlit as st
 import matplotlib.pyplot as plt
 # %matplotlib inline
@@ -46,8 +47,38 @@ temp = train_df.groupby(['benign_malignant','sex']).count()['image_name'].to_fra
 st.sidebar.title("Navigation")
 nav = st.sidebar.radio("Go to",["Prediction","EDA","About"])
 
-if nav=="Home":
-    st.write("Prediction")
+if nav=="Prediction":
+    st.title("Melanoma Prediction")
+
+    st.set_option('deprecation.showfileUploaderEncoding', False)
+    uploaded_file = st.file_uploader("Choose an image for Prediction", type=["jpg","png","jpeg"])
+    if uploaded_file is not None:
+        image = Image.open(uploaded_file)
+        st.image(image, caption='Uploaded Image.', use_column_width=True)
+        st.write("")
+        st.write("")
+        st.write("Predicting...")
+
+
+    st.write(
+        '''
+        <span style="color:green;font-size:40px">
+            Melanoma not Detected. <br />
+        </span>
+        ''',
+        unsafe_allow_html=True
+    )
+
+    st.write(
+        '''
+        <span style="color:red;font-size:40px">
+            Melanoma Detected. <br />
+        </span>
+        ''',
+        unsafe_allow_html=True
+    )
+
+
 
 if nav=="EDA":
     st.sidebar.title("EDA")
@@ -298,7 +329,7 @@ if nav=="EDA":
 
 if nav=="About":
     st.title("All about Melenoma")
-    st.markdown(""" 
+    st.markdown("""
     > Skin cancer is the most prevalent type of cancer. Melanoma, specifically, is responsible for 75% of skin cancer deaths, despite being the least common skin cancer. The American Cancer Society estimates over 100,000 new melanoma cases will be diagnosed in 2020. It's also expected that almost 7,000 people will die from the disease. As with other cancers, early and accurate detection—potentially aided by data science—can make treatment more effective.
 https://www.kaggle.com/c/siim-isic-melanoma-classification
 
@@ -306,9 +337,9 @@ https://www.kaggle.com/c/siim-isic-melanoma-classification
 https://www.verywellhealth.com/what-is-melanoma-514215
 
 <img src='https://impactmelanoma.org/wp-content/uploads/2018/11/Standard-Infographic_0.jpg' style="width:700px;height:600px;">
- 
- 
-> The[ Society for Imaging Informatics in Medicine (SIIM)](https://siim.org/page/about_siim) is the leading healthcare professional organization for those interested in the current and future use of informatics in medical imaging. The society's mission is to advance medical imaging informatics across the enterprise through education, research, and innovation in a multi-disciplinary community. The [International Skin Imaging Collaboration or 
+
+
+> The[ Society for Imaging Informatics in Medicine (SIIM)](https://siim.org/page/about_siim) is the leading healthcare professional organization for those interested in the current and future use of informatics in medical imaging. The society's mission is to advance medical imaging informatics across the enterprise through education, research, and innovation in a multi-disciplinary community. The [International Skin Imaging Collaboration or
 ISIC](https://siim.org/page/about_siim) Melanoma Project is an academia and industry partnership designed to facilitate the application of digital skin imaging to help reduce melanoma mortality
 
 > The overarching goal of the ISIC Melanoma Project is to support efforts to reduce melanoma-related deaths and unnecessary biopsies by improving the accuracy and efficiency of melanoma early detection since when recognized and treated in its earliest stages, melanoma is readily curable
@@ -346,7 +377,7 @@ Normally, skin cells develop in a controlled and orderly way — healthy new cel
 ## **Dataset**
 
 > The dataset which we are going to use are from following sources:
-1. Kaggle SIIM Melanoma Classification Challange 
+1. Kaggle SIIM Melanoma Classification Challange
     https://www.kaggle.com/c/siim-isic-melanoma-classification
 2. ISIC 2019 Melanoma Classification
     https://challenge2019.isic-archive.com/
@@ -370,4 +401,4 @@ Normally, skin cells develop in a controlled and orderly way — healthy new cel
 
 source: https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc """,True)
 
-st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
