@@ -13,13 +13,16 @@ The objective of this project is to identify melanoma in images of skin lesions.
 ## DataSet 
 
 The dataset which we are going to use are from following sources: 
-  Kaggle SIIM Melanoma Classification Challange :  https://www.kaggle.com/c/siim-isic-melanoma-classification
+
+Kaggle SIIM Melanoma Classification Challange :  https://www.kaggle.com/c/siim-isic-melanoma-classification
 
 The dataset consists of images in :
 
-DIOCOM format
-JPEG format in JPEG directory
-TFRecord format in tfrecords directory
+  DIOCOM format
+  
+  JPEG format in JPEG directory
+  
+  TFRecord format in tfrecords directory
 
 Additionally, there is a metadata comprising of train, test and submission file in CSV format.
 
