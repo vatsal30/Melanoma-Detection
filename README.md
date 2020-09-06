@@ -71,7 +71,12 @@ Additionally, there is a metadata comprising of train, test and submission file 
     cuda version 10.2.89
     cuddn 7.6.5
    python packages are detailed separately in `requirements.txt` or `environment.yml`.
-   
+
+## System Steup:
+  You can install all necessary files using 
+  ```  pip install -r requirements.txt ```
+  or if you are using conda you can create virtual environment named `pytorch` which has all required libraries:
+  ``` conda env create -f environment.yml ```
 ## Data Setup:
   Assumes that [Kaggle Api](https://github.com/Kaggle/kaggle-api) is installed.
     
