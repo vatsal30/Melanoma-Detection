@@ -121,8 +121,8 @@ if nav=="Prediction":
 if nav=="EDA":
     st.sidebar.title("EDA")
     st.title("Exploratory Data Analysis (EDA)")
-    train_df = pd.read_csv("data/train.csv")
-    test_df = pd.read_csv("data/test.csv")
+    train_df = pd.read_csv("../data/train.csv")
+    test_df = pd.read_csv("../data/test.csv")
     st.write("Train size = ",train_df.shape)
     st.write("Test Size = ",test_df.shape)
     temp = train_df.groupby(['benign_malignant','sex']).count()['image_name'].to_frame()
