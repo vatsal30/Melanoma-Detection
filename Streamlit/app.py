@@ -44,8 +44,8 @@ hide_streamlit_style = """
             </style>
             """
 
-train_df = pd.read_csv("data/train.csv")
-test_df = pd.read_csv("data/test.csv")
+train_df = pd.read_csv("../data/train.csv")
+test_df = pd.read_csv("../data/test.csv")
 
 temp = train_df.groupby(['benign_malignant','sex']).count()['image_name'].to_frame()
 
