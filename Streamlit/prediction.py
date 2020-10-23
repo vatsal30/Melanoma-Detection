@@ -1,7 +1,7 @@
 import os
 import torch
-# import pretrainedmodels
-# import albumentations
+import pretrainedmodels
+import albumentations
 
 import numpy as np 
 import pandas as pd 
@@ -10,7 +10,7 @@ from sklearn import metrics
 import torch.nn as nn
 import torch.nn.functional as F
 
-# from wtfml.data_loaders.image import ClassificationLoader
+from wtfml.data_loaders.image import ClassificationLoader
 # from wtfml.utils import EarlyStopping
 # from wtfml.engine import Engine
 
@@ -36,7 +36,7 @@ class SEResNext50_32x4d(nn.Module):
 def predict(image_path, fold):
 
     device="cpu"
-    model_path = "/media/vatsal/Movies & Games/Melenoma-Deep-Learning/model/"
+    model_path = "../model/"
 
     mean =  (0.485, 0.456, 0.406)
     std = (0.229, 0.224, 0.225)
