@@ -70,7 +70,7 @@ if nav=="About US":
 
     From the following link, you can find the project details:
 
-    https://github.com/vatsal30/HackGujarat
+    https://github.com/vatsal30/Melanoma-Detection
     """,True)
 
 
