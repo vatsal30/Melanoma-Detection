@@ -12,7 +12,7 @@ import torch.nn.functional as F
 
 from wtfml.data_loaders.image import ClassificationLoader
 # from wtfml.utils import EarlyStopping
-# from wtfml.engine import Engine
+from wtfml.engine import Engine
 
 class SEResNext50_32x4d(nn.Module):
     def __init__(self, pretrained="imagenet"):
@@ -62,7 +62,7 @@ def predict(image_path, fold):
     )
 
     model = SEResNext50_32x4d(pretrained=None)
-    model.load_state_dict(torch.load(os.path.join(model_path, f"model_fold_{fold}.bin")))
+    model.load_state_dict(torch.load(os.path.join(model_path, f"model_fold_{fold}.bin"))) #if gets error here add map_location=torch.device('cpu')
 
     predictions =  Engine.predict(test_loader, model, device=device)
     predictions = np.vstack((predictions)).ravel()
